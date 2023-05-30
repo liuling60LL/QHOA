@@ -1,0 +1,48 @@
+<van-cell-group>
+  <van-field
+    model:value="{{name}}"
+    clearable
+    required
+    label="客户名称"
+    placeholder="输入客户名称"
+    input-align="right"
+  />
+  <van-field
+    model:value="{{phone}}"
+    clearable
+    label="客户电话"
+    placeholder="输入客户电话"
+    input-align="right"
+  />
+  <van-field
+    model:value="{{company}}"
+    clearable
+    label="公司名称"
+    placeholder="输入公司名称"
+    input-align="right"
+  />
+  <van-field
+    model:value="{{zhiwu}}"
+    clearable
+    label="客户职务"
+    placeholder="输入客户职务"
+    input-align="right"
+  />
+  <van-field
+    model:value="{{ info }}"
+    clearable
+    label="备注信息"
+    placeholder="输入客户备注信息"
+    type="textarea"
+    autosize
+    input-align="right"
+  />
+  <van-cell center title="是否重点客户">
+    <van-switch checked="{{ checked }}"  bind:change="onChange" slot="right-icon" size="24" />
+  </van-cell>
+
+  <view class="bottom-submit-btn-box">
+		<van-button custom-class="submit-btn" bindtap="add" color="linear-gradient(to right, #4bb0ff, #07c160)" type="primary">确认</van-button>
+	</view>
+</van-cell-group>
+<van-toast id="van-toast" />

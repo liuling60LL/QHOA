@@ -1,0 +1,87 @@
+<van-cell-group>
+  <van-field
+    value="{{userInfo.name}}"
+    label="销售代表"
+    left-icon="contact"
+    readonly
+    input-align="right"
+  />
+  <van-cell required title="选择计划日期"  value="{{date||'计划日期'}}" is-link bind:click="onDisplay" />
+  <van-field
+    model:value="{{ planName }}"
+    required
+    clearable
+    input-align="right"
+    label="计划主题"
+    placeholder="输入周计划主题"
+  />
+  <picker range="{{projects}}" range-key="{{'name'}}" bindchange="bindPickerChange">
+    <van-field
+    required
+    model:value="{{ project }}"
+    clearable
+    readonly
+    input-align="right"
+    label="关联项目"
+    placeholder="输入选择计划的相关项目"
+    icon="question-o"
+    data-msg="没有对应项目？请先前往【项目管理】录入项目" 
+    bind:click-icon="taps"
+    />
+  </picker>
+  <van-field
+    model:value="{{ company }}"
+    clearable
+    required
+    input-align="right"
+    label="公司名称"
+    placeholder="拜访客户公司名称"
+  />
+  <picker range="{{customers}}" range-key="{{'name'}}" bindchange="bindPickerChange2">
+    <van-field
+      model:value="{{ customer }}"
+      clearable
+      readonly
+      required
+      input-align="right"
+      label="拜访客户"
+      placeholder="请选择本次计划的拜访客户"
+      icon="question-o"
+      data-msg="没有找到联系人？请先前往【客户管理】添加联系人" 
+      bind:click-icon="taps"
+    />
+  </picker>
+  <van-field
+    model:value="{{ phone }}"
+    clearable
+    required
+    input-align="right"
+    label="客户手机"
+    placeholder="拜访客户手机号码"
+  />
+  <van-field
+    model:value="{{ address }}"
+    clearable
+    required
+    input-align="right"
+    label="拜访地点"
+    placeholder="输入本次计划的拜访地点"
+  />
+  <van-field
+    model:value="{{ detail }}"
+    required
+    clearable
+    input-align="right"
+    label="计划内容"
+    placeholder="输入本次计划的详细计划内容"
+    type="textarea"
+    autosize
+  />
+
+  <view class="bottom-submit-btn-box">
+		<van-button custom-class="submit-btn" bindtap="add" color="linear-gradient(to right, #4bb0ff, #07c160)" type="primary">确定</van-button>
+	</view>
+
+</van-cell-group>
+<van-toast id="van-toast" />
+<van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />

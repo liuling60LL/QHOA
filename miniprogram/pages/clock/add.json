@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "快速打卡",
+  "navigationBarBackgroundColor": "#99CCFF",
+  "navigationBarTextStyle": "white",
+  "component": true,
+  "usingComponents": {}
+}

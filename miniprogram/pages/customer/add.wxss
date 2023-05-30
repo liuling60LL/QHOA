@@ -1,0 +1,12 @@
+/* pages/customer/add.wxss */
+.van-button--normal {
+  width: 100% !important;
+}
+.submit-btn-box {
+  width: 100% !important;
+}
+.submit-btn {
+  width: 50% !important;
+  margin: 0 25% !important;
+  border-radius: 1rem !important;
+}

@@ -1,0 +1,80 @@
+<page-meta page-font-size="system" />
+<view class="page">
+    <view class="top-notice">
+        <van-notice-bar
+        color="#1989fa"
+        background="#ecf9ff"
+        left-icon="info-o"
+        text="轻点查看项目详情"
+        />
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{xiaoshous}}" range-key="name">
+            <van-cell is-link title="销售人员" value="{{xiaoshou?xiaoshou:'选择销售人员'}}"></van-cell>
+        </picker>
+    </view>
+    <scroll-view class="container" scroll-y="{{true}}">
+        <view class="empty" wx:if="{{!list.length&&!loading}}">
+            <van-empty description="请选择销售查看" />
+        </view>
+        <view wx:if="{{list.length}}">
+            <view wx:for="{{list}}" wx:key="_id">
+                <van-card custom-class="orderItem" price="{{item.fee}}" >
+                    <view slot="title" class="title">
+                        {{item.name}}
+                    </view>
+                    <view slot="desc" class="text" data-data="{{item}}" bindtap="detail">
+                        <view class="info users">
+                            <view>联系人：{{item.customer||''}}</view>
+                            <view>联系电话：{{item.phone}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>公司：{{item.company||''}}</view>
+                            <view>地址：{{item.address||''}}</view>
+                        </view>
+                    </view>
+                    <view slot="tags">
+                        <view class="empty" wx:if="{{item.status === '1'}}">
+                            <van-tag mark rounded type="{{'primary'}}">正在跟进
+                            </van-tag>
+                        </view>
+                        <view class="empty" wx:if="{{item.status === '2'}}">
+                            <van-tag mark rounded type="{{'success'}}">已完结
+                            </van-tag>
+                        </view>
+                        <view class="empty" wx:if="{{item.status === '3'}}">
+                            <van-tag mark rounded type="{{'danger'}}">已废弃
+                            </van-tag>
+                        </view>
+                    </view>
+                </van-card>
+            </view>
+        </view>
+    </scroll-view>
+    <van-dialog use-slot title="{{detail.name}}" theme="round-button" closeOnClickOverlay="{{true}}" confirmButtonText="关闭" show="{{ show }}">
+    <van-cell-group>
+        <van-cell title="项目状态">
+            <view slot="">
+                <view class="empty" wx:if="{{detail.status === '1'}}">
+                    <van-tag mark rounded type="{{'primary'}}">正在跟进</van-tag>
+                </view>
+                <view class="empty" wx:if="{{detail.status === '2'}}">
+                    <van-tag mark rounded type="{{'success'}}">已完结</van-tag>
+                </view>
+                <view class="empty" wx:if="{{detail.status === '3'}}">
+                    <van-tag mark rounded type="{{'danger'}}">已废弃</van-tag>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell title="项目公司" value="{{detail.company}}" />
+        <van-cell title="项目地址" value="{{detail.address}}" />
+        <van-cell title="联系人" value="{{detail.customer}}" />
+        <van-cell title="联系方式" value="{{detail.phone}}" />
+        <van-cell title="开始时间" value="{{detail.date}}" />
+        <van-cell title="预计成交额" value="{{detail.fee}}" />
+        <van-cell title="当前阶段" value="{{detail.stage}}" />
+        <van-cell title="基本情况" label="{{detail.info}}" />
+        <view class="empty" wx:if="{{detail.doTime}}">
+            <van-cell title="完结/废弃时间" value="{{detail.doTime}}" />
+        </view>
+    </van-cell-group>
+    </van-dialog>
+</view>

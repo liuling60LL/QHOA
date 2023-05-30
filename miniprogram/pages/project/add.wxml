@@ -1,0 +1,118 @@
+<van-cell-group>
+  <van-field
+    model:value="{{userInfo.name}}"
+    label="销售代表"
+    left-icon="contact"
+    readonly
+    input-align="right"
+  />
+  <van-cell required title="请选择项目开始时间"  model:value="{{date||'项目开始时间'}}" is-link  bind:click="onDisplay" />
+  <van-field
+    model:value="{{ name }}"
+    required
+    clearable
+    input-align="right"
+    label="项目名称"
+    placeholder="输入项目名称"
+  />
+  <van-field
+    model:value="{{ company }}"
+    required
+    clearable
+    input-align="right"
+    label="项目公司名称"
+    placeholder="输入项目公司名称"
+  />
+  <van-field
+    model:value="{{ address }}"
+    required
+    clearable
+    input-align="right"
+    label="项目地址"
+    placeholder="输入项目地址"
+  />
+  <van-field
+    model:value="{{ fee }}"
+    clearable
+    required
+    label="预计成交额"
+    input-align="right"
+    placeholder="输入项目预计成交额"
+    type="number"
+    autosize
+  />
+  <picker bindchange="bindPickerChange" range="{{customers}}" range-key="{{'name'}}" bindchange="bindPickerChange">
+  <van-field
+    model:value="{{ customer }}"
+    clearable
+    required
+    readonly
+    input-align="right"
+    label="项目负责人"
+    placeholder="选择项目负责人"
+    icon="question-o"
+    data-msg="没有找到联系人？请先前往【客户管理】添加联系人" 
+    bind:click-icon="taps"
+  />
+  </picker>
+  <van-field
+    model:value="{{ phone }}"
+    clearable
+    required
+    input-align="right"
+    label="联系人电话"
+    placeholder="项目联系人电话"
+  />
+  <van-field
+    model:value="{{ zhiwu }}"
+    clearable
+    required
+    input-align="right"
+    label="联系人职务"
+    placeholder="项目联系人职务"
+  />
+  <van-field
+  model:value="{{ type }}"
+  clearable
+  required
+  readonly
+  input-align="right"
+  label="项目类型"
+  placeholder="项目类型（房地产、综合体、工业）"
+  bind:click-input="showTypesAction"
+  />
+  <van-field
+    model:value="{{ stage }}"
+    clearable
+    required
+    readonly
+    input-align="right"
+    label="项目阶段"
+    placeholder="项目阶段（立项、施工、前期交流、投标、合同实施）"
+    bind:click-input="showStagesAction"
+  />
+  <van-field
+    model:value="{{ info }}"
+    clearable
+    required
+    label="基本情况"
+    input-align="right"
+    placeholder="输入项目基本情况"
+    type="textarea"
+    autosize
+  />
+
+  <view class="bottom-submit-btn-box">
+		<van-button custom-class="submit-btn" bindtap="add" color="linear-gradient(to right, #4bb0ff, #07c160)" type="primary">创建项目</van-button>
+	</view>
+
+</van-cell-group>
+
+<van-action-sheet show="{{showTypes}}">
+	<van-picker show-toolbar title="项目类型" columns="{{ types }}" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+</van-action-sheet>
+<van-action-sheet show="{{showStages}}">
+	<van-picker show-toolbar title="项目阶段" columns="{{ stages }}" bind:cancel="onCancel2" bind:confirm="onConfirm2" />
+</van-action-sheet>
+<van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
+<van-toast id="van-toast" />

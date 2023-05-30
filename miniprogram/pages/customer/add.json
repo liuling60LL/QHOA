@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "添加客户",
+  "navigationBarBackgroundColor": "#99CCFF",
+  "navigationBarTextStyle": "white",
+  "component": true,
+  "usingComponents": {}
+}

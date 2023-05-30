@@ -1,0 +1,63 @@
+<view class="center">
+  <view class="blue-top">
+    <view class="user-card">
+      <view class="card-top">
+        <view class="user-top">
+          <view class="user-vip" style="position:relative;">
+            <image class="user-pic" src="{{userInfo.avatarUrl||'/images/default.jpg'}}"></image>
+          </view>
+          <view class="user-board">
+            <view class="user-name">{{userInfo.name}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="card-bottom">
+        <view class="{{userInfo.role?'header_view_show1':'header_view_hide1'}}" data-url="../weekplan/daiban" bindtap="goto">
+          <view class="count">
+            <text class="num">{{userInfo.totalPlan}}</text>
+          </view>
+          <text class="txt">待办计划</text>
+        </view>
+        <view class="{{!userInfo.role?'header_view_show1':'header_view_hide1'}}" data-url="../manage/daibanPlans" bindtap="goto">
+          <view class="count">
+            <text class="num">{{userInfo.totalPlan}}</text>
+          </view>
+          <text class="txt">销售全部待办计划</text>
+        </view>
+        <view class="{{userInfo.role?'header_view_show1':'header_view_hide1'}}" data-url="../project/index" bindtap="goto">
+          <view class="count">
+            <text class="num">{{userInfo.totalProject}}</text>
+          </view>
+          <text class="txt">全部项目</text>
+        </view>
+        <view class="{{!userInfo.role?'header_view_show1':'header_view_hide1'}}" data-url="../manage/projects" bindtap="goto">
+          <view class="count">
+            <text class="num">{{userInfo.totalProject}}</text>
+          </view>
+          <text class="txt">销售全部项目</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="center-list">
+    <view class="{{!userInfo.role?'header_view_show':'header_view_hide'}}">
+      <button bindtap="allCustomer"  open-type="navigate" class="center-list-item" >
+        <van-icon class="icon1" name="friends-o" color="#00c8fd" size="26"/>
+        <text class="list-text">销售全部客户名单</text>
+      </button> 
+    </view>
+    <button class="center-list-item" openType="share">
+      <van-icon class="icon1" name="share-o" color="#00c8fd" size="26"/>
+      <text class="list-text">分享给同事</text>
+    </button>
+    <button class="center-list-item" openType="contact">
+      <van-icon class="icon1" name="service-o" color="#00c8fd" size="26"/>
+      <text class="list-text">联系开发Bug反馈</text>
+    </button>  
+  </view>
+  
+  <view class="relief">Copyright © 2021 zgyw.com 智工运维</view>     
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

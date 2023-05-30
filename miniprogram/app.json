@@ -1,0 +1,72 @@
+{
+  "usingComponents": {
+    "van-toast": "@vant/weapp/toast/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-switch": "@vant/weapp/switch/index"
+  },
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/clock/index",
+    "pages/weekplan/index",
+    "pages/project/index",
+    "pages/customer/index",
+    "pages/customer/add",
+    "pages/project/add",
+    "pages/weekplan/add",
+    "pages/clock/add",
+    "pages/weekplan/daiban",
+    "pages/mine/customers",
+    "pages/manage/plans",
+    "pages/manage/projects",
+    "pages/manage/customers",
+    "pages/manage/clockList",
+    "pages/manage/daibanPlans"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取定位，用于打卡"
+    }
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "齐慧销售管理平台",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#99CCFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-a.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-a.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,67 @@
+<view class="page">
+  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{userInfo.role?'header_view_show':'header_view_hide'}}">
+    <van-grid-item
+      icon="map-marked"
+      data-url="../clock/add" 
+      bind:click="checkUser"
+      text="快速打卡"
+    />
+    <van-grid-item
+      icon="todo-list"
+      data-url="../weekplan/index" 
+      bind:click="checkUser"
+      badge="{{totalPlan}}"
+      text="本周计划"
+    />
+    <van-grid-item
+      icon="good-job"
+      data-url="../project/index" 
+      bind:click="checkUser"
+      badge="{{totalProject}}"
+      text="项目管理"
+    />
+    <van-grid-item
+      icon="friends"
+      data-url="../customer/index" 
+      bind:click="checkUser"
+      text="客户管理"
+    />
+    <van-grid-item
+      icon="descending"
+      data-url="../clock/index" 
+      bind:click="checkUser"
+      text="打卡记录"
+    />
+  </van-grid>
+
+  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{!userInfo.role?'header_view_show':'header_view_hide'}}">
+    <van-grid-item
+    icon="descending"
+    data-url="../manage/clockList" 
+    bind:click="checkUser"
+    text="销售打卡记录"
+    />
+    <van-grid-item
+      icon="todo-list"
+      data-url="../manage/plans" 
+      bind:click="checkUser"
+      badge="{{totalPlan}}"
+      text="销售周计划"
+    />
+    <van-grid-item
+      icon="good-job"
+      data-url="../manage/projects" 
+      bind:click="checkUser"
+      badge="{{totalProject}}"
+      text="销售手头项目"
+    />
+    <van-grid-item
+      icon="friends"
+      data-url="../manage/customers" 
+      bind:click="checkUser"
+      text="销售客户资料"
+    />
+  </van-grid>
+
+</view>
+<van-toast id="van-toast" />

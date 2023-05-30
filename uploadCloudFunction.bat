@@ -1,0 +1,1 @@
+"D:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e clock-5gvmvebh19687136 --n quickstartFunctions --r --project "D:\QHOA" --report_start --report

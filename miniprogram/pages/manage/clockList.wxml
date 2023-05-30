@@ -1,0 +1,73 @@
+<page-meta page-font-size="system" />
+<view class="page">
+    <view class="top-notice">
+        <van-notice-bar
+        color="#1989fa"
+        background="#ecf9ff"
+        left-icon="info-o"
+        text="点击查看打卡详细信息"
+        />
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{xiaoshous}}" range-key="name">
+            <van-cell is-link title="销售人员" value="{{xiaoshou?xiaoshou:'选择销售人员'}}"></van-cell>
+        </picker>
+        <picker mode="date" value="{{start}}" bindchange="startChange">
+            <van-cell is-link title="开始日期" value="{{start?start:'选择开始日期'}}"></van-cell>
+        </picker>
+        <picker mode="date" value="{{end}}" bindchange="endChange">
+            <van-cell is-link title="结束日期" value="{{end?end:'选择结束日期'}}"></van-cell>
+        </picker>
+    </view>
+    <scroll-view class="container" scroll-y="{{true}}">
+        <view class="empty" wx:if="{{!list.length&&!loading}}">
+            <van-empty description="请选择销售查看" />
+        </view>
+        <view wx:if="{{list.length}}">
+            <view wx:for="{{list}}" wx:key="_id">
+                <van-card custom-class="orderItem">
+                    <view slot="title" class="title">
+                        {{item.address}}
+                    </view>
+                    <view slot="desc" class="text" data-data="{{item}}" bindtap="detail">
+                        <view class="info users">
+                            <view>拜访客户：</view>
+                            <view>{{item.customer||''}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>关联计划：</view>
+                            <view>{{item.plan||''}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>相关项目：</view>
+                            <view>{{item.project||''}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>打卡时间:</view>
+                            <view>{{item.Time||''}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>拜访详情：</view>
+                        </view>
+                        <view class="info users">
+                            <view>{{item.info||''}}</view>
+                        </view>
+                    </view>
+                </van-card>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-dialog use-slot title="打卡详情" theme="round-button" closeOnClickOverlay="{{true}}" confirmButtonText="确认" show="{{ show }}">
+    <van-cell  title="打卡地点：" ></van-cell>
+    <map id="myMap"
+    markers="{{markers}}"
+    style="width:100%;height:300px;"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}" scale='16' show-location>
+    </map>
+    <van-cell  title="现场图片：" value="点击图片查看"></van-cell>
+    <view  style="display: flex;flex-wrap: wrap;justify-content: space-around;">
+        <image wx:for="{{images}}"  wx:key="url" src="{{item.url}}" style="width:100px; height:100px;" data-list="{{item}}" data-src="{{item}}" bindtap='imgYu'/>
+    </view>
+</van-dialog>

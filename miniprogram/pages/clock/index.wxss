@@ -1,0 +1,39 @@
+/* pages/my/my.wxss */
+.container{
+  margin-top:128px;
+}
+.orderItem{
+  margin:10px;
+  padding-left: 1px;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px #ccc;
+  font-size: medium;
+  line-height: 2rem;
+}
+.info{
+  display:flex;
+  justify-content: space-between;
+}
+.users{
+  display:flex;
+}
+.submit-btn {
+  width: 50% !important;
+  margin: 0 25% !important;
+  border-radius: 1rem !important;
+}
+.title{
+  font-size: 18px;
+}
+.thumbclass{
+  border-radius: 1rem !important;
+  width: 90% !important;
+  height: 90% !important;
+  display: block !important;
+  margin: 0 auto !important;
+  left:0 !important;
+}
+.van-card{
+  padding: 2% 2% !important;
+  padding-left: 2px !important;
+}

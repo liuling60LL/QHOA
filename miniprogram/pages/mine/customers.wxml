@@ -1,0 +1,48 @@
+<page-meta page-font-size="system" />
+<view class="page">
+    <view class="top-notice">
+        <van-notice-bar
+        color="#1989fa"
+        background="#ecf9ff"
+        left-icon="info-o"
+        text="点击联系人可快速复制联系人电话！"
+        />
+    </view>
+    <scroll-view class="container" scroll-y="{{true}}">
+        <view class="empty" wx:if="{{!list.length&&!loading}}">
+            <van-empty description="请选择销售查看" />
+        </view>
+        <view wx:if="{{list.length}}">
+            <view wx:for="{{list}}" wx:key="_id">
+                <van-card custom-class="orderItem" >
+                    <view slot="title" class="title">
+                        {{item.name}}
+                    </view>
+                    <view slot="desc" class="text" data-data="{{item}}" bindtap="copy">
+                        <view class="info users">
+                            <view>公司：{{item.company||''}}</view>
+                            <view>联系电话：{{item.phone}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>担任职务：{{item.zhiwu||''}}</view>
+                        </view>
+                        <view class="info users">
+                            <view>客户备注：{{item.info||''}}</view>
+                        </view>
+                    </view>
+                    <view slot="tags">
+                        <view class="empty" wx:if="{{item.type}}">
+                            <van-tag mark rounded type="{{'danger'}}">重点客户
+                            </van-tag>
+                        </view>
+                        <view class="empty" wx:if="{{!item.type}}">
+                            <van-tag mark rounded type="{{'primary'}}">普通客户
+                            </van-tag>
+                        </view>
+                    </view>
+                </van-card>
+            </view>
+        </view>
+    </scroll-view>
+    <van-toast id="van-toast" />
+</view>

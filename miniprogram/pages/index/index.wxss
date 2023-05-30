@@ -1,0 +1,13 @@
+/* pages/index/index.wxss */
+.header_view_hide{
+  display: none;
+  padding-top: 10px;
+}
+ 
+.header_view_show{
+  display: block;
+  padding-top: 10px;
+}
+.van-grid-item__content{
+  border-radius: 1rem;
+}
