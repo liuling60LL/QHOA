@@ -37,7 +37,9 @@
     "pages/manage/projects",
     "pages/manage/customers",
     "pages/manage/clockList",
-    "pages/manage/daibanPlans"
+    "pages/manage/daibanPlans",
+    "pages/clock/add1",
+    "pages/manage/authority"
   ],
   "permission": {
     "scope.userLocation": {

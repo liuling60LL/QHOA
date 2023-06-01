@@ -1,0 +1,49 @@
+<!--pages/manage/authority.wxml-->
+<page-meta page-font-size="system" />
+<view class="page">
+  <van-empty description="empty" wx-if="{{noAuthList.length===0}}" />
+  <scroll-view wx-else class="container" scroll-y="{{true}}">
+    <view wx:for="{{noAuthList}}" wx:key="_id" >
+      <van-cell title="{{item.name}}"
+        is-link
+        label="{{item.createTime}}"
+        data-userinfo="{{item}}"
+        bind:click="updateClick"
+      />
+    </view>
+    <!-- <van-empty description="0" /> -->
+  </scroll-view>
+  <van-dialog
+    use-slot
+    title="成员信息"
+    show="{{ show }}"
+    show-cancel-button
+    confirm-button-open-type="getUserInfo"
+    bind:close="onClose"
+    bind:getuserinfo="getUserInfo"
+  >
+    <van-cell-group>
+      <van-field
+        value="{{ openid }}"
+        label="openID"
+        readonly
+      />
+      <van-field
+        value="{{ curUser.name }}"
+        label="用户名"
+        clearable="{{true}}"
+        placeholder="请输入用户名"
+        bind:input="onNameInput"
+      />
+      <van-field  label="修改权限"
+         use-button-slot
+         value="{{ curUser.test }}" readonly>
+        <van-switch slot="button" checked="{{ checked }}"
+          bind:change="onAuthChange" size="24px"/>
+      </van-field>
+      <!-- hasAuthorize -->
+
+    </van-cell-group>
+  </van-dialog>
+</view>
+

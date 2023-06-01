@@ -1,0 +1,28 @@
+<view class="page">
+<map id="myMap"
+    markers="{{markers}}"
+    style="width:100%;height:300px;"
+    longitude="{{poi.longitude}}"
+    latitude="{{poi.latitude}}" scale='16' show-location>
+</map>
+<van-cell-group>
+  <van-field
+    value="{{markers[0].title}}"
+    label="当前位置"
+    left-icon="location-o"
+    readonly
+  />
+</van-cell-group>
+
+  <view class="images">
+    <van-uploader file-list="{{ fileList }}" max-count="6" deletable="{{ true }}" upload-icon="photo" bind:after-read="afterRead" bind:delete="deleteImg">
+    </van-uploader>
+  </view>
+
+  <view class="btn-class">
+    <van-button custom-class="submit-btn" bindtap="submit" color="linear-gradient(to right, #4bb0ff, #07c160)" type="primary">打卡</van-button>
+  </view>
+
+
+<van-toast id="van-toast" />
+</view>

@@ -10,6 +10,7 @@ exports.main = async (event, context) => {
   const openid = wxContext.OPENID;
   let totalPlan = 0
   let totalProject = 0
+  let newUser = 0
 
   const user = await db.collection('userInfo').where({
     openid: openid
@@ -31,6 +32,9 @@ exports.main = async (event, context) => {
       console.error(e)
     }
   }else{
+    if(!data[0].hasAuthorize){
+      newUser = await db.collection('userInfo').count()
+    }
     if(data[0].role){
       totalPlan = await db.collection('weekPlan').where({
         openid: openid,
@@ -51,7 +55,8 @@ exports.main = async (event, context) => {
     }).update({
       data:{
         totalPlan: totalPlan.total,
-        totalProject: totalProject.total
+        totalProject: totalProject.total,
+        newUser:newUser.total
       }
     })
   }
@@ -59,6 +64,10 @@ exports.main = async (event, context) => {
   return await db.collection('userInfo').where({
     openid: openid
   }).get()
+  // return {
+  //   user,
+  //   noAuth
+  // }
 
   function processDate(_date) {
     var y = _date.getFullYear();

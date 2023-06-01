@@ -45,7 +45,13 @@
       <button bindtap="allCustomer"  open-type="navigate" class="center-list-item" >
         <van-icon class="icon1" name="friends-o" color="#00c8fd" size="26"/>
         <text class="list-text">销售全部客户名单</text>
-      </button> 
+      </button>
+    </view>
+    <view class="{{(userInfo.isAdmin && userInfo.role)?'header_view_show':'header_view_hide'}}">
+      <button bindtap="toAdmin"  open-type="navigate" class="center-list-item" >
+        <van-icon class="icon1" name="manager-o" color="#00c8fd" size="26"/>
+        <text class="list-text">切换到管理员</text>
+      </button>
     </view>
     <button class="center-list-item" openType="share">
       <van-icon class="icon1" name="share-o" color="#00c8fd" size="26"/>
@@ -54,10 +60,16 @@
     <button class="center-list-item" openType="contact">
       <van-icon class="icon1" name="service-o" color="#00c8fd" size="26"/>
       <text class="list-text">联系开发Bug反馈</text>
-    </button>  
+    </button>
+    <view class="{{!userInfo.role?'header_view_show':'header_view_hide'}}">
+      <button bindtap="toStaff"  open-type="navigate" class="center-list-item" >
+        <van-icon class="icon1" name="smile-o" color="#00c8fd" size="26"/>
+        <text class="list-text">切换到普通员工</text>
+      </button>
+    </view>
   </view>
-  
-  <view class="relief">Copyright © 2021 zgyw.com 智工运维</view>     
+
+  <view class="relief">Copyright © 2023 zgyw.com 智工运维</view>
 </view>
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />

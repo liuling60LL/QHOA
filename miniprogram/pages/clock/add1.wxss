@@ -1,0 +1,60 @@
+/* pages/clock/add1.wxss */
+/* pages/clock/index.wxss */
+.page{
+  background: linear-gradient(to bottom,#fff,rgb(219, 246, 247));
+}
+.van-button--normal {
+  width: 100% !important;
+}
+.submit-btn-box {
+  width: 100% !important;
+}
+.btn-class{
+  margin-top: 6%;
+}
+.submit-btn {
+  width: 50% !important;
+  margin: 0 25% !important;
+  border-radius: 1rem !important;
+}
+
+.images{
+  margin-top: 1%;
+  padding-right: 10px;
+  padding-left: 10px;
+  overflow-y: auto;
+}
+
+.van-uploader{
+  width: 100%;
+  padding-top: 10px;
+}
+
+.van-uploader__upload{
+  border-radius: 1rem !important;
+  background-color: #99CCFF !important;
+  margin: 1% 1% 1% 1% !important;
+  width: 31.3% !important;
+  padding-top: 31.3%;
+}
+
+.van-uploader__preview{
+  border-radius: 1rem !important;
+  margin: 1% 1% 1% 1% !important;
+  width: 31.3% !important;
+  padding-top: 31.3%;
+}
+.van-uploader__preview-image{
+  border-radius: 1rem;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  left:0;
+  top:0;
+}
+.van-uploader__upload-icon{
+  position: absolute !important;
+  color: #3c7cbd !important;
+  left:40%;
+  top:40%;
+}

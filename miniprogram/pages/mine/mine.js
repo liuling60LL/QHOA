@@ -3,8 +3,9 @@ import Dialog from '@vant/weapp/dialog/dialog';
 Page({
   data: {
     userInfo: {},
+    role: true,
     arr: ["莫问收获，但问耕耘","愿你眼中总有光芒，愿你活出想要的模样","如果我会发光，就不必害怕黑暗", "要么忙着活 要么忙着死","活得尽兴 而不是庆幸", "如果你害怕做一件事 那就去做" ]
-  },  
+  },
 
   onLoad() {
     const{arr} = this.data
@@ -14,10 +15,10 @@ Page({
   onShow: function () {
     this.userinfo()
   },
-  
+
   userinfo(){
     let that = this;
-    
+
     wx.cloud.callFunction({
       name: "userInfo",
       data: {
@@ -52,6 +53,64 @@ Page({
   allCustomer(){
     wx.navigateTo({
       url: "../mine/customers",
+    })
+  },
+  toAdmin() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: "updateUser",
+      data: {
+        _id: that.data.userInfo._id,
+        role: false
+      },
+      success(res) {
+        if (res.result.stats.updated >= 0) {
+          that.setData({
+            'userInfo.role': false
+          })
+          wx.showToast({
+            title: '切换成功',
+            icon: 'none',
+          })
+        } else {
+          wx.showToast({
+            title: '切换失败',
+            icon: 'none',
+          })
+        }
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
+  toStaff(){
+    let that = this;
+    wx.cloud.callFunction({
+      name: "updateUser",
+      data: {
+        _id: that.data.userInfo._id,
+        role: true
+      },
+      success(res) {
+        if (res.result.stats.updated == 0) {
+          that.setData({
+            'userInfo.role': true
+          })
+          wx.showToast({
+            title: '切换成功',
+            icon: 'none',
+          })
+        } else {
+          wx.showToast({
+            title: '切换失败',
+            icon: 'none',
+          })
+        }
+      },
+      fail(res) {
+        console.log(res)
+      }
     })
   }
 

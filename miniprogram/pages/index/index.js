@@ -3,7 +3,8 @@ Page({
   data: {
     userInfo:{},
     totalPlan:'',
-    totalProject:''
+    totalProject:'',
+    newUser:''
   },
 
   onLoad: function () {
@@ -11,6 +12,7 @@ Page({
 
   onShow(){
     this.userinfo()
+    this.getNewUser()
   },
 
   userinfo(){
@@ -20,14 +22,35 @@ Page({
       data: {
       },
       success(res) {
+        const user = res.result.data[0]
         if(res.result){
           that.setData({
             userInfo: res.result.data[0],
             totalPlan: res.result.data[0].totalPlan,
-            totalProject: res.result.data[0].totalProject
+            totalProject: res.result.data[0].totalProject,
+            // newUser: user.newUser
           })
         }
       },
+    })
+  },
+  getNewUser(){
+    wx.cloud.callFunction({
+      name: "noAuth",
+      data: {
+      },
+      success(res) {
+        console.log(res.result.noAuthList)
+        const length = res.result.noAuthList.length
+        if(res.result){
+          that.setData({
+            newUser: length
+          })
+        }
+      },
+      fail: error => {
+        console.log(error);
+      }
     })
   },
 
