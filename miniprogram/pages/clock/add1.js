@@ -157,6 +157,7 @@ Page({
             markers: markers
           },
           success(res) {
+            console.log(res)
             Toast({
               type: 'success',
               message: '打卡成功',

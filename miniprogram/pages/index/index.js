@@ -36,22 +36,18 @@ Page({
   },
   getNewUser(){
     wx.cloud.callFunction({
-      name: "noAuth",
-      data: {
-      },
-      success(res) {
-        console.log(res.result.noAuthList)
+      name: 'noAuth',
+      data: {},
+      success: res => {
         const length = res.result.noAuthList.length
-        if(res.result){
-          that.setData({
-            newUser: length
-          })
-        }
+        this.setData({
+          newUser: length
+        });
       },
       fail: error => {
         console.log(error);
       }
-    })
+    });
   },
 
   checkUser(ev){

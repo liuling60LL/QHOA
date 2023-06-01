@@ -64,22 +64,19 @@ Page({
         role: false
       },
       success(res) {
-        if (res.result.stats.updated >= 0) {
-          that.setData({
-            'userInfo.role': false
-          })
-          wx.showToast({
-            title: '切换成功',
-            icon: 'none',
-          })
-        } else {
-          wx.showToast({
-            title: '切换失败',
-            icon: 'none',
-          })
-        }
+        that.setData({
+          'userInfo.role': false
+        })
+        wx.showToast({
+          title: '切换成功',
+          icon: 'none',
+        })
       },
       fail(res) {
+        wx.showToast({
+          title: '切换失败',
+          icon: 'none',
+        })
         console.log(res)
       }
     })

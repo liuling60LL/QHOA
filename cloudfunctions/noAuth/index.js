@@ -12,13 +12,13 @@ exports.main = async (event, context) => {
 
   const noAuth = await db.collection('userInfo')
     .where({
-      hasAuthorize: true
+      hasAuthorize: false
     }).get();
 
   const data = noAuth.data
 
   for (let i = 0; i < data.length; i++) {
-    if (data[i].hasAuthorize === true) {
+    if (data[i].hasAuthorize === false) {
       noAuthList.push(data[i]);
     }
   }
@@ -29,17 +29,13 @@ exports.main = async (event, context) => {
   })
   .update({
     data: {
-      name:event.name,
-      test: event.test,
+      name: event.name || '',
+      hasAuthorize: event.hasAuthorize,
     }
   })
 
   return {
     noAuthList,
     updateAuth,
-    // event,
-    // openid: wxContext.OPENID,
-    // appid: wxContext.APPID,
-    // unionid: wxContext.UNIONID,
   }
 }

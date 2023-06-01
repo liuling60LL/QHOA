@@ -1,4 +1,5 @@
 // pages/manage/authority.js
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -52,7 +53,7 @@ Page({
       this.setData({
         curUser: user,
         openid:user.openid.substring(user.openid.length - 10),
-        checked:user.test
+        checked:user.hasAuthorize
       })
     }
     if (user){
@@ -68,14 +69,13 @@ Page({
   },
   getUserInfo(event) {
     // console.log(event.currentTarget.dataset);
-    const { curUser } = this.data
-    console.log(curUser)
+    const { curUser,checked } = this.data
+    curUser.hasAuthorize = checked
     wx.cloud.callFunction({
       name: 'noAuth',
       data: {
         openid: curUser.openid,
-        // hasAuthorize: true,
-        test:curUser.test,
+        hasAuthorize:curUser.hasAuthorize,
         name:curUser.name
       },
       success: res => {
@@ -99,7 +99,7 @@ Page({
   },
   onAuthChange(){
     const { curUser,checked } = this.data
-    curUser.test = checked
+    curUser.hasAuthorize = checked
     this.setData({
       checked: !checked,
     });

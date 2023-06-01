@@ -37,7 +37,7 @@
       />
       <van-field  label="修改权限"
          use-button-slot
-         value="{{ curUser.test }}" readonly>
+         value="{{ checked }}" readonly>
         <van-switch slot="button" checked="{{ checked }}"
           bind:change="onAuthChange" size="24px"/>
       </van-field>
