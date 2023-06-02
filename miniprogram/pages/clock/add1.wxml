@@ -12,6 +12,15 @@
     left-icon="location-o"
     readonly
   />
+  <van-field
+    model:value="{{ project }}"
+    required
+    clearable
+    input-align="center"
+    label="所属项目"
+    placeholder="请输入相关项目"
+    bind:click-icon="taps"
+  />
 </van-cell-group>
 
   <view class="images">

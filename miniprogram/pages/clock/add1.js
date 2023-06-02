@@ -146,7 +146,7 @@ Page({
           data: {
             // planId:planId,
             // plan,plan,
-            // project,project,
+            project,project,
             // customer:customer,
             info:info,
             longitude: poi.longitude,
@@ -233,13 +233,16 @@ Page({
     //   Toast('请正确填写打卡信息');
     //   return false;
     // }
-    // if (fileList.length==0) {
-    //   Toast('请拍摄现在图片');
-    //   return false;
-    // }else {
-    //   this.uploadToCloud()
-    // }
-    this.uploadToCloud()
+    if (!project ) {
+      Toast('请选择相关项目,如未录入项目，请先前往【项目管理】新增');
+      return false;
+    }
+    if (fileList.length==0) {
+      Toast('请拍摄现在图片');
+      return false;
+    }else {
+      this.uploadToCloud()
+    }
   }
 
 })
