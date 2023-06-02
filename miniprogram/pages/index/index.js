@@ -23,6 +23,7 @@ Page({
       },
       success(res) {
         const user = res.result.data[0]
+        console.log(user.totalProject)
         if(res.result){
           that.setData({
             userInfo: res.result.data[0],
@@ -53,7 +54,7 @@ Page({
   checkUser(ev){
     const {url} = ev.currentTarget.dataset;
     const {userInfo} = this.data
-    if(userInfo.hasAuthorize === false){
+    if(userInfo.hasAuthorize === 0){
       Toast.fail('未授权，请联系管理员');
     }else{
       wx.navigateTo({

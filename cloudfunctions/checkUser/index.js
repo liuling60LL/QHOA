@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
 
   const exit = user.data
 
-  if(exit.length !== 0 && exit[0].hasAuthorize === true){
+  if(exit.length !== 0 && exit[0].hasAuthorize !== 0){
     return 'success'
   }else{
     return 'false'

@@ -12,13 +12,13 @@ exports.main = async (event, context) => {
 
   const noAuth = await db.collection('userInfo')
     .where({
-      hasAuthorize: false
+      hasAuthorize: 0
     }).get();
 
   const data = noAuth.data
 
   for (let i = 0; i < data.length; i++) {
-    if (data[i].hasAuthorize === false) {
+    if (data[i].hasAuthorize === 0) {
       noAuthList.push(data[i]);
     }
   }

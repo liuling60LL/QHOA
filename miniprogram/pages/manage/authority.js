@@ -68,9 +68,7 @@ Page({
     this.setData({ curUser })
   },
   getUserInfo(event) {
-    // console.log(event.currentTarget.dataset);
-    const { curUser,checked } = this.data
-    curUser.hasAuthorize = checked
+    const { curUser } = this.data
     wx.cloud.callFunction({
       name: 'noAuth',
       data: {
@@ -99,10 +97,15 @@ Page({
   },
   onAuthChange(){
     const { curUser,checked } = this.data
-    curUser.hasAuthorize = checked
+    // curUser.hasAuthorize = checked
     this.setData({
       checked: !checked,
     });
+    this.setData({ curUser })
+  },
+  onChange(ev){
+    const { curUser } = this.data
+    curUser.hasAuthorize = Number(ev.detail)
     this.setData({ curUser })
   },
 

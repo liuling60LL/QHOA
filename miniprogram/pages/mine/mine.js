@@ -29,7 +29,7 @@ Page({
             userInfo: res.result.data[0]
           })
         }
-        if(res.result.data[0].hasAuthorize === false){
+        if(res.result.data[0].hasAuthorize === 0){
           Dialog.alert({
             title: '未授权',
             message: '用户未授权，请联系管理员授权',
@@ -71,6 +71,9 @@ Page({
           title: '切换成功',
           icon: 'none',
         })
+        wx.switchTab({
+          url: '../index/index'
+        })
       },
       fail(res) {
         wx.showToast({
@@ -90,22 +93,22 @@ Page({
         role: true
       },
       success(res) {
-        if (res.result.stats.updated == 0) {
-          that.setData({
-            'userInfo.role': true
-          })
-          wx.showToast({
-            title: '切换成功',
-            icon: 'none',
-          })
-        } else {
-          wx.showToast({
-            title: '切换失败',
-            icon: 'none',
-          })
-        }
+        that.setData({
+          'userInfo.role': true
+        })
+        wx.showToast({
+          title: '切换成功',
+          icon: 'none',
+        })
+        wx.switchTab({
+          url: '../index/index'
+        })
       },
       fail(res) {
+        wx.showToast({
+          title: '切换失败',
+          icon: 'none',
+        })
         console.log(res)
       }
     })

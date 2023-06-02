@@ -1,1 +1,10 @@
 /* pages/manage/authority.wxss */
+.box{
+  display:flex;
+  justify-content: space-around;
+  font-size: 14px;
+  color: #646566;
+  font-weight: 400;
+  height: 44px;
+  align-items: center;
+}

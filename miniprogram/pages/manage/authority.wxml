@@ -23,11 +23,11 @@
     bind:getuserinfo="getUserInfo"
   >
     <van-cell-group>
-      <van-field
+      <!-- <van-field
         value="{{ openid }}"
         label="openID"
         readonly
-      />
+      /> -->
       <van-field
         value="{{ curUser.name }}"
         label="用户名"
@@ -35,12 +35,21 @@
         placeholder="请输入用户名"
         bind:input="onNameInput"
       />
-      <van-field  label="修改权限"
+      <!-- <van-field  label="修改权限"
          use-button-slot
          value="{{ checked }}" readonly>
         <van-switch slot="button" checked="{{ checked }}"
           bind:change="onAuthChange" size="24px"/>
-      </van-field>
+      </van-field> -->
+      <van-radio-group value="{{ curUser.hasAuthorize }}"
+        bind:change="onChange"
+        >
+        <div class="box">
+          <label >分配权限</label>
+          <van-radio name="1">施工人员</van-radio>
+          <van-radio name="2">销售人员</van-radio>
+        </div>
+      </van-radio-group>
 
     </van-cell-group>
   </van-dialog>

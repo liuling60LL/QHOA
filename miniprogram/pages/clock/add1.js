@@ -144,10 +144,10 @@ Page({
         wx.cloud.callFunction({
           name: "clock",
           data: {
-            // planId:planId,
-            // plan,plan,
+            planId:planId,
+            plan,plan,
             project,project,
-            // customer:customer,
+            customer:customer,
             info:info,
             longitude: poi.longitude,
             latitude: poi.latitude,

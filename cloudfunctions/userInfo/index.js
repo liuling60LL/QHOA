@@ -10,7 +10,6 @@ exports.main = async (event, context) => {
   const openid = wxContext.OPENID;
   let totalPlan = 0
   let totalProject = 0
-  let newUser = 0
 
   const user = await db.collection('userInfo').where({
     openid: openid
@@ -22,8 +21,8 @@ exports.main = async (event, context) => {
       await db.collection('userInfo').add({
         data:{
           openid: openid,
-          name: '联系管理员授权', //昵称
-          hasAuthorize: false,
+          name: openid, //昵称
+          hasAuthorize: 0,
           role:true,
           createTime: processDate(new Date()), //注册时间
         }
@@ -32,10 +31,12 @@ exports.main = async (event, context) => {
       console.error(e)
     }
   }else{
-    if(!data[0].hasAuthorize){
-      newUser = await db.collection('userInfo').count()
-    }
-    if(data[0].role){
+    if(data[0].hasAuthorize === 3){
+      totalPlan = await db.collection('weekPlan').where({
+        status: _.in(['1','2'])
+      }).count()
+      totalProject = await db.collection('projects').count()
+    }else{
       totalPlan = await db.collection('weekPlan').where({
         openid: openid,
         status: _.in(['1','2'])
@@ -43,12 +44,21 @@ exports.main = async (event, context) => {
       totalProject = await db.collection('projects').where({
         openid: openid,
       }).count()
-    }else{
-      totalPlan = await db.collection('weekPlan').where({
-        status: _.in(['1','2'])
-      }).count()
-      totalProject = await db.collection('projects').count()
     }
+    // if(data[0].role){
+    //   totalPlan = await db.collection('weekPlan').where({
+    //     openid: openid,
+    //     status: _.in(['1','2'])
+    //   }).count()
+    //   totalProject = await db.collection('projects').where({
+    //     openid: openid,
+    //   }).count()
+    // }else{
+    //   totalPlan = await db.collection('weekPlan').where({
+    //     status: _.in(['1','2'])
+    //   }).count()
+    //   totalProject = await db.collection('projects').count()
+    // }
 
     await db.collection('userInfo').where({
       openid: openid
@@ -56,7 +66,6 @@ exports.main = async (event, context) => {
       data:{
         totalPlan: totalPlan.total,
         totalProject: totalProject.total,
-        newUser:newUser.total
       }
     })
   }
@@ -64,10 +73,6 @@ exports.main = async (event, context) => {
   return await db.collection('userInfo').where({
     openid: openid
   }).get()
-  // return {
-  //   user,
-  //   noAuth
-  // }
 
   function processDate(_date) {
     var y = _date.getFullYear();

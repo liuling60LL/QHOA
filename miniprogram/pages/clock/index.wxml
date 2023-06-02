@@ -20,11 +20,11 @@
                         {{item.address}}
                     </view>
                     <view slot="desc" class="text">
-                        <view class="info users">
+                        <view class="info users" >
                             <view class="info-title">拜访客户：</view>
                             <view class="info-detail">{{item.customer||''}}</view>
                         </view>
-                        <view class="info users">
+                        <view class="info users" >
                             <view class="info-title">关联计划：</view>
                             <view class="info-detail">{{item.plan||''}}</view>
                         </view>
@@ -36,7 +36,7 @@
                             <view class="info-title">打卡时间:</view>
                             <view class="info-detail">{{item.Time||''}}</view>
                         </view>
-                        <view class="info users">
+                        <view class="info users" >
                             <view class="info-title">拜访详情：</view>
                             <view class="info-detail">{{item.info||''}}</view>
                         </view>

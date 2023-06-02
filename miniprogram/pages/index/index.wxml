@@ -1,11 +1,21 @@
 <view class="page">
-  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{userInfo.role?'header_view_show':'header_view_hide'}}">
+  <!-- 施工打卡 -->
+  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{(userInfo.hasAuthorize === 1)?'header_view_show':'header_view_hide'}}">
     <van-grid-item
       icon="location"
       data-url="../clock/add1"
       bind:click="checkUser"
       text="施工打卡"
     />
+    <van-grid-item
+      icon="descending"
+      data-url="../clock/index"
+      bind:click="checkUser"
+      text="打卡记录"
+    />
+  </van-grid>
+  <!-- 销售打卡 -->
+  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{(userInfo.hasAuthorize === 2)?'header_view_show':'header_view_hide'}}">
     <van-grid-item
       icon="map-marked"
       data-url="../clock/add"
@@ -40,7 +50,8 @@
     />
   </van-grid>
 
-  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{!userInfo.role?'header_view_show':'header_view_hide'}}">
+  <!-- 管理员 -->
+  <van-grid clickable gutter="{{ 10 }}"  column-num="2" class="{{(userInfo.hasAuthorize === 3)?'header_view_show':'header_view_hide'}}">
     <van-grid-item
     icon="descending"
     data-url="../manage/clockList"
